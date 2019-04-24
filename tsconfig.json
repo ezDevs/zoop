@@ -10,8 +10,18 @@
         "downlevelIteration": true,
         "strictNullChecks": true,
         "importHelpers": true,
+        "module": "commonjs",
+        "lib": [
+            "es2017",
+            "es7",
+            "es6",
+            "dom"
+        ],
+        "declaration": true,
+        "outDir": "dist",
     },
     "exclude": [
+        "node_modules",
         "dist/*",
         "examples/*",
         "tests/*"

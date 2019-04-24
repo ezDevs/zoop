@@ -4,6 +4,8 @@ import { Resource } from './resource';
 import { Seller, SellerCreationInfo, SellerEndpoint } from './seller';
 import { BankAccountTokenCreationInfo, CardTokenCreationInfo, Token, TokenEndpoint } from './token';
 import { Transaction, TransactionCreationInfo, TransactionEndpoint } from './transaction';
+import { Card, CardAssociateWithACustomer } from './card';
+import { BankAccount, BankAssociateWithACustomer } from './bank-account';
 import { Zoop } from './zoop';
 
 export interface Marketplace extends Resource {
@@ -76,7 +78,7 @@ export class MarketplaceEndpoint extends Endpoint<Marketplace> {
     }
 
     async createSeller(sellerInfo: SellerCreationInfo) {
-        return this.request('POST', '/sellers', sellerInfo) as Promise<Seller>;
+        return this.request('POST', '/sellers/individuals', sellerInfo) as Promise<Seller>;
     }
 
     async createTransaction(transactionInfo: TransactionCreationInfo) {
@@ -89,5 +91,13 @@ export class MarketplaceEndpoint extends Endpoint<Marketplace> {
 
     async createBankAccountToken(tokenInfo: BankAccountTokenCreationInfo) {
         return this.request('POST', '/bank_accounts/tokens', tokenInfo) as Promise<Token>;
+    }
+
+    async associateCardWithACustomer(cardAssociate: CardAssociateWithACustomer) {
+        return this.request('POST', '/cards', cardAssociate) as Promise<Card>;
+    }
+
+    async associateBankWithACustomer(bankAssociate: BankAssociateWithACustomer) {
+        return this.request('POST', '/bank_accounts', bankAssociate) as Promise<BankAccount>;
     }
 }

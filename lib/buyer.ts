@@ -63,4 +63,8 @@ export class BuyerEndpoint extends Endpoint<Buyer> {
     async get() {
         return this.request('GET');
     }
+
+    async put() {
+        return this.request('PUT');
+    }
 }

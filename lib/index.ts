@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 export * from './boleto';
 export * from './buyer';
 export * from './endpoint-error';

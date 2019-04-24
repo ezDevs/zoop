@@ -1,6 +1,11 @@
 import { Resource } from './resource';
 import { VerificationStatus } from './verification-status';
 
+export interface BankAssociateWithACustomer {
+    token: string;
+    customer: string;
+}
+
 export interface BankAccount extends Resource {
     resource: 'bank_account';
     holder_name: string;

@@ -1,6 +1,11 @@
 import { Resource } from './resource';
 import { VerificationStatus } from './verification-status';
 
+export interface CardAssociateWithACustomer {
+    token: string;
+    customer: string;
+}
+
 export interface Card extends Resource {
     resource: 'card';
     description: string | null;
