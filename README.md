@@ -20,7 +20,7 @@
 ## Installing
 
 ```bash
-npm install @coreh/zoop
+npm install zoop-integration
 ```
 
 ## Usage
@@ -66,6 +66,10 @@ for await (const buyerInfo of marketplace.listBuyers()) {
     - Create Card Token
     - Create Bank Account Token
     - Retrieve
+
+This project is an update and addition of some zoop endpoints.
+
+Everyone credits the original idea https://github.com/coreh/zoop
 
 ## License
 
