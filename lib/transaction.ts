@@ -14,9 +14,21 @@ export interface TransactionCreationInfo {
     customer?: string;
 }
 
-export interface ReverseTransactionCard {
+export interface TransactionCard {
     on_behalf_of: string;
     amount: number;
+}
+
+export interface SplitRules {
+
+}
+
+export interface CreateSplitRules {
+    recipient: string,
+    liable: boolean,
+    charge_processing_fee: boolean,
+    percentage: number,
+    amount: number,
 }
 
 export interface Transaction extends Resource {
@@ -68,7 +80,15 @@ export class TransactionEndpoint extends Endpoint<Transaction> {
         return this.request('GET');
     }
 
-    async cancelPayment(reverseTransactionCard: ReverseTransactionCard) {
-        return this.request('POST', '/void', reverseTransactionCard) as Promise<Transaction>;
+    async captureTransaction(transactionCard: TransactionCard) {
+        return this.request('POST', '/capture', transactionCard) as Promise<Transaction>;
+    }
+
+    async cancelTransaction(transactionCard: TransactionCard) {
+        return this.request('POST', '/void', transactionCard) as Promise<Transaction>;
+    }
+
+    async createSplitRules(createSplitRules: CreateSplitRules) {
+        return this.request('POST', '/split_rules', createSplitRules) as Promise<SplitRules>;
     }
 }
