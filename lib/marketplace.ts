@@ -81,6 +81,10 @@ export class MarketplaceEndpoint extends Endpoint<Marketplace> {
         return this.request('POST', '/sellers/individuals', sellerInfo) as Promise<Seller>;
     }
 
+    async updateSeller(sellerInfo: SellerCreationInfo) {
+        return this.request('PUT', '/sellers/individuals', sellerInfo) as Promise<Seller>;
+    }
+
     async createTransaction(transactionInfo: TransactionCreationInfo) {
         return this.request('POST', '/transactions', transactionInfo) as Promise<Transaction>;
     }

@@ -14,6 +14,11 @@ export interface TransactionCreationInfo {
     customer?: string;
 }
 
+export interface ReverseTransactionCard {
+    on_behalf_of: string;
+    amount: number;
+}
+
 export interface Transaction extends Resource {
     resource: 'transaction';
     status: string;
@@ -61,5 +66,9 @@ export class TransactionEndpoint extends Endpoint<Transaction> {
 
     async get() {
         return this.request('GET');
+    }
+
+    async cancelPayment(reverseTransactionCard: ReverseTransactionCard) {
+        return this.request('POST', '/void', reverseTransactionCard) as Promise<Transaction>;
     }
 }
