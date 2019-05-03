@@ -13,6 +13,11 @@ export interface CreateDocumentSeller {
     description: string | null,
 }
 
+export interface GetSellerCPFORCNPJ {
+    taxpayer_id: string | null,
+    ein: string | null,
+}
+
 export interface Document extends Resource {
     resource: 'document';
     name: string,

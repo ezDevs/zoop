@@ -1,7 +1,7 @@
 import { Buyer, BuyerCreationInfo, BuyerEndpoint } from './buyer';
 import { Endpoint } from './endpoint';
 import { Resource } from './resource';
-import { Seller, SellerCreationInfo, SellerEndpoint } from './seller';
+import { Seller, SellerCreationInfo, SellerEndpoint, GetSellerCPFORCNPJ } from './seller';
 import { BankAccountTokenCreationInfo, CardTokenCreationInfo, Token, TokenEndpoint } from './token';
 import { Transaction, TransactionCreationInfo, TransactionEndpoint } from './transaction';
 import { Card, CardAssociateWithACustomer } from './card';
@@ -103,5 +103,9 @@ export class MarketplaceEndpoint extends Endpoint<Marketplace> {
 
     async associateBankWithACustomer(bankAssociate: BankAssociateWithACustomer) {
         return this.request('POST', '/bank_accounts', bankAssociate) as Promise<BankAccount>;
+    }
+
+    async listSellersByCPFORCNPJ(sellerSearch: GetSellerCPFORCNPJ) {
+        return this.request('GET', '/sellers/search', sellerSearch) as Promise<Seller>;
     }
 }
